@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.9.6 on darwin)" generated="2024-12-06T23:51:10.417524" rpa="false" schemaversion="5">
+<suite id="s1" name="Repository Api Test" source="/Users/barathkumarj/Simplismart Assignment/tests/api_tests/repository_api_test.robot">
+<test id="s1-t1" name="Fetch Repository Details API" line="35">
+<kw name="Fetch Repository Details API" owner="api_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-12-06T23:51:10.489452" level="INFO">Creating Session using : alias=github, url=https://api.github.com, headers={'Authorization': 'token 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'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>github</arg>
+<arg>${BASE_URL}</arg>
+<arg>headers={"Authorization": "token ${TOKEN}"}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-12-06T23:51:10.489108" elapsed="0.003066"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2024-12-06T23:51:10.492731" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-12-06T23:51:10.871528" level="INFO">GET Request : url=https://api.github.com/repos/your_username/MyPublicRepoAPI 
+ path_url=/repos/your_username/MyPublicRepoAPI 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'token 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'} 
+ body=None 
+ </msg>
+<msg time="2024-12-06T23:51:10.872089" level="INFO">GET Response : url=https://api.github.com/repos/your_username/MyPublicRepoAPI 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 06 Dec 2024 18:21:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'X-OAuth-Scopes': 'admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, write:packages', 'X-Accepted-OAuth-Scopes': 'repo', 'github-authentication-token-expiration': '2025-01-05 06:59:14 UTC', 'X-GitHub-Media-Type': 'github.v3; format=json', 'x-github-api-version-selected': '2022-11-28', 'X-RateLimit-Limit': '5000', 'X-RateLimit-Remaining': '4996', 'X-RateLimit-Reset': '1733512516', 'X-RateLimit-Used': '4', 'X-RateLimit-Resource': 'core', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Vary': 'Accept-Encoding, Accept, X-Requested-With', 'Content-Encoding': 'gzip', 'Transfer-Encoding': 'chunked', 'Server': 'github.com', 'X-GitHub-Request-Id': 'C550:ACA90:2EA11A:347B18:67534096'} 
+ body={"message":"Not Found","documentation_url":"https://docs.github.com/rest/repos/repos#get-a-repository","status":"404"} 
+ </msg>
+<msg time="2024-12-06T23:51:10.872341" level="INFO">/Users/barathkumarj/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-12-06T23:51:10.872741" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>github</arg>
+<arg>/repos/your_username/${repo_name}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2024-12-06T23:51:10.492636" elapsed="0.380239"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2024-12-06T23:51:10.874218" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2024-12-06T23:51:10.874516" level="FAIL">404.0 != 200.0</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="FAIL" start="2024-12-06T23:51:10.873253" elapsed="0.008003">404.0 != 200.0</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-12-06T23:51:10.881910" elapsed="0.000284"/>
+</kw>
+<arg>MyPublicRepoAPI</arg>
+<status status="FAIL" start="2024-12-06T23:51:10.488578" elapsed="0.393895">404.0 != 200.0</status>
+</kw>
+<doc>Verifies that repository details are fetched correctly using the GitHub API.</doc>
+<status status="FAIL" start="2024-12-06T23:51:10.487941" elapsed="0.394971">404.0 != 200.0</status>
+</test>
+<status status="FAIL" start="2024-12-06T23:51:10.420282" elapsed="0.463424"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Repository Api Test">Repository Api Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-12-06T23:51:10.492731" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>
