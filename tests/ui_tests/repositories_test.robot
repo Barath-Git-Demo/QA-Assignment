@@ -8,7 +8,7 @@ Test Teardown    Take Screenshot On Failure    ${TEST NAME}
 # Test Creating a Public Repository
 Create Public Repository
     Open Browser To URL    ${LOGIN_PAGE}
-    Login To GitHub        Barath-Git-Demo    GithubTest@123
+    Login To GitHub        ${username}    ${password}
     Create New Repository  MyPublicRepo    is_private=False
     # Wait Until Page Contains Element    ${REPO_SUCCESS_HEADER}
     Close The Browser

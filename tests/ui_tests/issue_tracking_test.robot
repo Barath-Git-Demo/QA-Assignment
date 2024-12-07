@@ -8,7 +8,7 @@ Test Teardown    Take Screenshot On Failure    ${TEST NAME}
 
 Create New Issue
     Open Browser To URL    ${LOGIN_PAGE}
-    Login To GitHub        Barath-Git-Demo    GithubTest@123
+    Login To GitHub        ${username}    ${password}
     Navigate To Tab        Barath-Git-Demo/MyPublicRepo
     Click Element    ${ISSUES_TAB}
     Click Element    ${NEW_ISSUE_BUTTON}

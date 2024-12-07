@@ -2,6 +2,10 @@
 Library           SeleniumLibrary
 Resource    ../resources/locators.robot
 
+*** Variables ***
+${username}    Barath-Git-Demo
+${password}    xygdyj-subQy6-buvmir
+
 *** Keywords ***
 
 # Open Browser to Specific URL

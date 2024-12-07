@@ -8,8 +8,8 @@ Test Teardown    Take Screenshot On Failure    ${TEST NAME}
 # Test Creating a Pull Request
 Create New Pull Request
     Open Browser To URL    ${LOGIN_PAGE}
-    Login To GitHub        Barath-Git-Demo    GithubTest@123
-    Navigate To Tab        Barath-Git-Demo/MyPublicRepo
+    Login To GitHub        ${username}    ${password}
+    Navigate To Tab        Barath-Git-Demo/QA-Assignment
     Click Element          ${PULL_REQUESTS_TAB}
     Click Element           ${NEW_PULL_REQUEST_BUTTON}
     Wait Until Page Contains    Compare changes
